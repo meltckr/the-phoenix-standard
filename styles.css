@@ -150,9 +150,29 @@ a:hover { color: var(--gold); }
   transition: opacity .4s var(--ease), filter .4s var(--ease);
 }
 .avc-mark:hover { opacity: 0.88; filter: drop-shadow(0 0 14px rgba(200,146,43,0.18)); }
-.avc-logo-svg { display: block; width: 170px; height: auto; flex: none; }
+.avc-lockup { display: inline-flex; align-items: center; gap: 0.48rem; }
+.avc-icon-svg { display: block; width: 28px; height: 28px; flex: none; opacity: 0.9; }
+.avc-text { display: flex; flex-direction: column; gap: 0.05rem; }
+.avc-word {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #ffffff;
+}
+.avc-full {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.43rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: rgba(255,255,255,0.58);
+  white-space: nowrap;
+}
 .brand-tag {
-  margin-left: 47px;
+  margin-left: 36px;
   font-family: var(--font-body);
   font-size: 0.55rem;
   font-weight: 700;
@@ -165,7 +185,7 @@ a:hover { color: var(--gold); }
   position: absolute; top: 1.8rem; right: 1.8rem; z-index: 4;
   text-align: left;
 }
-.avc-mark--hero .avc-logo-svg { width: 166px; }
+.avc-mark--hero .avc-lockup { transform-origin: top right; }
 
 /* ============== NORTH STAR ============== */
 .section--northstar {
@@ -493,8 +513,10 @@ a:hover { color: var(--gold); }
 .colophon { position: relative; z-index: 2; background: var(--black); border-top: 1px solid var(--line); padding: 4rem 1.5rem 2.5rem; }
 .colo-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; }
 .avc-mark--foot { color: var(--ink-soft); opacity: 0.9; }
-.avc-mark--foot .avc-logo-svg { width: 178px; }
-.avc-mark--foot .brand-tag { font-size: 0.58rem; }
+.avc-mark--foot .avc-icon-svg { width: 31px; height: 31px; }
+.avc-mark--foot .avc-word { font-size: 1.16rem; }
+.avc-mark--foot .avc-full { font-size: 0.47rem; }
+.avc-mark--foot .brand-tag { font-size: 0.58rem; margin-left: 39px; }
 .colo-note { margin: 1.4rem 0 0; color: var(--ink-mute); font-size: 0.88rem; line-height: 1.65; max-width: 36ch; }
 .colo-h { font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin: 0 0 1.2rem; }
 .colo-sources ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 2.4rem; }
@@ -538,7 +560,7 @@ a:hover { color: var(--gold); }
   .section { padding: 4.5rem 1.2rem; }
   .usage-grid { grid-template-columns: 1fr; }
   .avc-mark--hero { top: 1rem; right: 1rem; opacity: 0.52; }
-  .avc-mark--hero .avc-logo-svg { width: 132px; }
+  .avc-mark--hero .avc-lockup { transform: scale(0.84); }
   .avc-mark--hero .brand-tag { display: none; }
   .tier--peak, .tier--expression, .tier--pillars, .tier--foundation { width: 100%; }
   .brick { flex: 1 1 100%; min-width: 0; }
@@ -583,16 +605,13 @@ a:hover { color: var(--gold); }
     margin: 0 auto 0.2in;
     align-items: center;
   }
-  .avc-logo-svg line, .avc-logo-svg circle, .avc-logo-svg polyline {
+  .avc-icon-svg line, .avc-icon-svg circle, .avc-icon-svg polyline {
     stroke: #111111 !important;
   }
-  .avc-logo-svg circle {
+  .avc-icon-svg circle {
     fill: none !important;
   }
-  .avc-logo-svg text {
-    fill: #111111 !important;
-  }
-  .avc-logo-svg text:last-child { fill: #333333 !important; }
+  .avc-word, .avc-full { color: #111111 !important; }
   .usage-card, .voice, .team-card, .flags-col, .inscription, .scorecard, .brick {
     background: #ffffff !important;
     color: #111111 !important;
