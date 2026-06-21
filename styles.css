@@ -292,18 +292,18 @@ a:hover { color: var(--gold); }
 .tier--foundation { width: 100%; }
 
 .tier-label {
-  font-size: 0.64rem; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--ink-mute); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem;
 }
-.tier-num { color: var(--gold); font-weight: 600; }
+.tier-num { color: var(--gold-bright); font-weight: 700; }
 .bricks { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: center; width: 100%; }
 .brick {
   flex: 1 1 auto; min-width: max-content;
   padding: 0.78rem 1.05rem; text-align: center;
-  border: 1px solid var(--line); border-radius: 3px;
-  background: linear-gradient(180deg, var(--granite-700), var(--granite-800));
+  border: 1px solid #3a3a42; border-radius: 3px;
+  background: linear-gradient(180deg, var(--granite-600), var(--granite-700));
   font-size: 0.86rem; font-weight: 500; letter-spacing: 0.02em; color: var(--ink);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 3px rgba(0,0,0,0.45);
   transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
 }
 .brick:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
@@ -311,24 +311,24 @@ a:hover { color: var(--gold); }
 /* tier accents - Suns-coded ramp: purple foundation -> orange/gold peak */
 .tier--foundation .brick {
   background: linear-gradient(180deg, var(--granite-600), var(--granite-700));
-  border-color: #34343a;
-  box-shadow: inset 0 1px 0 rgba(120,86,180,0.12), 0 1px 2px rgba(0,0,0,0.4);
+  border-color: rgba(120,86,180,0.34);
+  box-shadow: inset 0 1px 0 rgba(120,86,180,0.16), 0 1px 3px rgba(0,0,0,0.45);
 }
 .tier--pillars .brick {
-  background: linear-gradient(180deg, rgba(90,62,143,0.16), var(--granite-700));
-  border-color: rgba(120,86,180,0.34);
-  box-shadow: inset 0 1px 0 rgba(120,86,180,0.14), 0 1px 2px rgba(0,0,0,0.4);
+  background: linear-gradient(180deg, rgba(90,62,143,0.26), var(--granite-600));
+  border-color: rgba(138,104,196,0.55);
+  box-shadow: inset 0 1px 0 rgba(120,86,180,0.20), 0 1px 3px rgba(0,0,0,0.45);
 }
 .tier--pillars .brick:hover { border-color: var(--purple); }
 .tier--expression .brick {
-  background: linear-gradient(180deg, rgba(226,88,34,0.10), var(--granite-700));
-  border-color: rgba(226,88,34,0.30);
+  background: linear-gradient(180deg, rgba(226,88,34,0.18), var(--granite-600));
+  border-color: rgba(226,88,34,0.5);
 }
 .tier--expression .brick:hover { border-color: var(--orange); }
 .brick--peak {
-  background: linear-gradient(180deg, rgba(226,88,34,0.20), rgba(200,146,43,0.10) 60%, var(--granite-700));
-  border-color: rgba(224,178,87,0.5); color: var(--ink);
-  box-shadow: inset 0 1px 0 rgba(224,178,87,0.18), 0 1px 3px rgba(0,0,0,0.5);
+  background: linear-gradient(180deg, rgba(226,88,34,0.28), rgba(200,146,43,0.14) 60%, var(--granite-600));
+  border-color: rgba(224,178,87,0.65); color: var(--ink);
+  box-shadow: inset 0 1px 0 rgba(224,178,87,0.24), 0 1px 4px rgba(0,0,0,0.5);
 }
 .brick--peak:hover { border-color: var(--gold-bright); }
 /* etched centerline through the monument, anchoring the emblem to the apex */
