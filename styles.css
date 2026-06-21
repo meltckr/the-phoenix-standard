@@ -272,8 +272,11 @@ a:hover { color: var(--gold); }
   display: flex; flex-direction: column; align-items: center;
 }
 .northstar-glyph { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; margin-bottom: 1.4rem; }
-.northstar-glyph svg { filter: drop-shadow(0 0 14px rgba(224,178,87,0.45)); animation: twinkle 4s ease-in-out infinite; }
-@keyframes twinkle { 0%,100%{opacity:.78} 50%{opacity:1} }
+.ps-emblem { filter: drop-shadow(0 0 18px rgba(226,136,42,0.42)); }
+.ps-emblem .ps-rays { opacity: 0.92; animation: twinkle 4.5s ease-in-out infinite; }
+.ps-emblem .ps-star { transform-origin: 60px 60px; animation: emblem-pulse 6s ease-in-out infinite; }
+@keyframes twinkle { 0%,100%{opacity:.7} 50%{opacity:.98} }
+@keyframes emblem-pulse { 0%,100%{opacity:.82; transform: scale(1)} 50%{opacity:1; transform: scale(1.04)} }
 .northstar-label { font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
 
 .pyramid { width: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -305,14 +308,38 @@ a:hover { color: var(--gold); }
 }
 .brick:hover { transform: translateY(-2px); border-color: var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
 
-/* tier accents */
-.tier--foundation .brick { background: linear-gradient(180deg, var(--granite-600), var(--granite-700)); border-color: #34343a; }
-.tier--pillars .brick    { box-shadow: inset 0 1px 0 rgba(120,86,180,0.10), 0 1px 2px rgba(0,0,0,0.4); }
-.brick--peak {
-  background: linear-gradient(180deg, rgba(226,88,34,0.16), var(--granite-700));
-  border-color: rgba(226,88,34,0.4); color: var(--ink);
+/* tier accents - Suns-coded ramp: purple foundation -> orange/gold peak */
+.tier--foundation .brick {
+  background: linear-gradient(180deg, var(--granite-600), var(--granite-700));
+  border-color: #34343a;
+  box-shadow: inset 0 1px 0 rgba(120,86,180,0.12), 0 1px 2px rgba(0,0,0,0.4);
 }
-.brick--peak:hover { border-color: var(--orange); }
+.tier--pillars .brick {
+  background: linear-gradient(180deg, rgba(90,62,143,0.16), var(--granite-700));
+  border-color: rgba(120,86,180,0.34);
+  box-shadow: inset 0 1px 0 rgba(120,86,180,0.14), 0 1px 2px rgba(0,0,0,0.4);
+}
+.tier--pillars .brick:hover { border-color: var(--purple); }
+.tier--expression .brick {
+  background: linear-gradient(180deg, rgba(226,88,34,0.10), var(--granite-700));
+  border-color: rgba(226,88,34,0.30);
+}
+.tier--expression .brick:hover { border-color: var(--orange); }
+.brick--peak {
+  background: linear-gradient(180deg, rgba(226,88,34,0.20), rgba(200,146,43,0.10) 60%, var(--granite-700));
+  border-color: rgba(224,178,87,0.5); color: var(--ink);
+  box-shadow: inset 0 1px 0 rgba(224,178,87,0.18), 0 1px 3px rgba(0,0,0,0.5);
+}
+.brick--peak:hover { border-color: var(--gold-bright); }
+/* etched centerline through the monument, anchoring the emblem to the apex */
+.pyramid::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: 50%;
+  width: 1px; transform: translateX(-0.5px);
+  background: linear-gradient(180deg, rgba(224,178,87,0.34), rgba(90,62,143,0.12) 55%, transparent);
+  pointer-events: none; z-index: 0;
+}
+.pyramid { position: relative; }
+.tier { z-index: 1; }
 
 /* engraved inscription */
 .inscription {
@@ -534,7 +561,7 @@ a:hover { color: var(--gold); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-scroll .scroll-line, .northstar-glyph svg { animation: none; }
+  .hero-scroll .scroll-line, .northstar-glyph svg, .ps-emblem .ps-rays, .ps-emblem .ps-star { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -578,7 +605,9 @@ a:hover { color: var(--gold); }
     font-size: 11pt;
     line-height: 1.45;
   }
-  .grain, .vignette, .hero-scroll, .northstar-glyph svg { display: none !important; }
+  .grain, .vignette, .hero-scroll { display: none !important; }
+  .ps-emblem { filter: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .ps-emblem .ps-rays, .ps-emblem .ps-star { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
   a { color: #111111; text-decoration: underline; }
   .hero, .section, .colophon {
