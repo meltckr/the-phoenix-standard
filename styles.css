@@ -637,6 +637,38 @@ a:hover { color: var(--gold); }
   }
   /* peak tier has 4 short labels -> 2x2 grid reads clean and narrow */
   .tier--peak .bricks { grid-template-columns: 1fr 1fr; }
+
+  /* MOBILE READABILITY: bricks must read at first glance, before any tap.
+     On small screens the granite ramp sits too close to page black, so we
+     lift fill separation, border luminosity and label contrast more than
+     desktop -- while keeping the Suns ramp restrained (washes stay modest). */
+  .tier-label { color: var(--ink); }
+  .tier-num { color: var(--gold-bright); }
+  .brick {
+    border-color: #4a4a55;
+    background: linear-gradient(180deg, #2f2f36, #232328);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .tier--foundation .brick {
+    background: linear-gradient(180deg, rgba(120,86,180,0.14), #232328);
+    border-color: rgba(138,104,196,0.5);
+    box-shadow: inset 0 1px 0 rgba(150,116,206,0.22), 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .tier--pillars .brick {
+    background: linear-gradient(180deg, rgba(108,78,168,0.38), #2a2733);
+    border-color: rgba(156,122,214,0.7);
+    box-shadow: inset 0 1px 0 rgba(150,116,206,0.26), 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .tier--expression .brick {
+    background: linear-gradient(180deg, rgba(226,88,34,0.32), #2c2630);
+    border-color: rgba(232,110,60,0.72);
+    box-shadow: inset 0 1px 0 rgba(232,120,70,0.2), 0 1px 3px rgba(0,0,0,0.5);
+  }
+  .brick--peak {
+    background: linear-gradient(180deg, rgba(226,88,34,0.4), rgba(200,146,43,0.22) 60%, #2c2630);
+    border-color: rgba(230,186,98,0.82);
+    box-shadow: inset 0 1px 0 rgba(230,186,98,0.32), 0 1px 4px rgba(0,0,0,0.55);
+  }
 }
 @media (max-width: 380px) {
   .brick { font-size: 0.68rem; padding: 0.55rem 0.3rem; }
