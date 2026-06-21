@@ -339,7 +339,33 @@ a:hover { color: var(--gold); }
   pointer-events: none; z-index: 0;
 }
 .pyramid { position: relative; }
-.tier { z-index: 1; }
+.tier {
+  z-index: 1; border-radius: 5px; cursor: pointer;
+  border: 1px solid transparent; background: transparent;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease),
+              border-color .35s var(--ease), background-color .35s var(--ease);
+}
+.tier:hover { transform: translateY(-2px); }
+.tier:focus { outline: none; }
+.tier:focus-visible {
+  outline: 2px solid var(--gold-bright); outline-offset: 4px; border-radius: 6px;
+}
+/* tap / click / keyboard "selected" state - Suns-coded glow per tier */
+.tier.is-active {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(226,88,34,0.10), transparent 70%),
+    rgba(255,255,255,0.012);
+  border-color: rgba(224,178,87,0.34);
+  box-shadow: 0 10px 34px rgba(0,0,0,0.45), inset 0 1px 0 rgba(224,178,87,0.12);
+}
+.tier--foundation.is-active { border-color: rgba(120,86,180,0.42); box-shadow: 0 10px 34px rgba(0,0,0,0.45), inset 0 1px 0 rgba(120,86,180,0.18); }
+.tier--pillars.is-active    { border-color: rgba(120,86,180,0.5); }
+.tier--expression.is-active { border-color: rgba(226,88,34,0.5); }
+.tier--peak.is-active       { border-color: var(--gold-bright); }
+.tier.is-active .tier-label { color: var(--ink-soft); }
+.tier.is-active .brick { border-color: rgba(224,178,87,0.5); }
+.tier--pillars.is-active .brick    { border-color: rgba(120,86,180,0.55); }
+.tier--expression.is-active .brick { border-color: rgba(226,88,34,0.55); }
 
 /* engraved inscription */
 .inscription {
@@ -561,6 +587,8 @@ a:hover { color: var(--gold); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  .tier, .brick { transition: none; }
+  .tier:hover, .brick:hover { transform: none; }
   .hero-scroll .scroll-line, .northstar-glyph svg, .ps-emblem .ps-rays, .ps-emblem .ps-star { animation: none; }
   html { scroll-behavior: auto; }
 }
@@ -577,10 +605,11 @@ a:hover { color: var(--gold); }
   .score-row { grid-template-columns: 1fr; }
   .score-row span { border-right: 0; border-bottom: 1px solid var(--line-soft); }
   .score-row span:last-child { border-bottom: 0; text-align: left; }
-  /* pyramid widens on small screens for legibility */
-  .tier--peak       { width: 78%; }
-  .tier--expression { width: 90%; }
-  .tier--pillars    { width: 100%; }
+  /* pyramid stays stepped on tablets */
+  .tier--peak       { width: 60%; }
+  .tier--expression { width: 78%; }
+  .tier--pillars    { width: 92%; }
+  .tier--foundation { width: 100%; }
 }
 @media (max-width: 540px) {
   body { font-size: 16px; }
@@ -590,9 +619,28 @@ a:hover { color: var(--gold); }
   .avc-mark--hero .avc-lockup { transform: scale(0.74); }
   .avc-mark--hero .brand-tag { display: none; }
   .avc-mark--hero .avc-full { letter-spacing: 0.12em; }
-  .tier--peak, .tier--expression, .tier--pillars, .tier--foundation { width: 100%; }
-  .brick { flex: 1 1 100%; min-width: 0; }
   .colo-foot { flex-direction: column; }
+
+  /* MOBILE PYRAMID: keep a stepped silhouette, never full-width stacked blocks */
+  .tier { padding: 0.85rem 0.7rem; }
+  .tier--peak       { width: 62%; }
+  .tier--expression { width: 78%; }
+  .tier--pillars    { width: 92%; }
+  .tier--foundation { width: 100%; }
+  .tier-label { margin-bottom: 0.6rem; font-size: 0.58rem; letter-spacing: 0.18em; }
+  /* bricks wrap to a tidy 2-column grid inside each tier so the tier keeps its width */
+  .bricks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .brick {
+    flex: initial; min-width: 0; width: auto;
+    padding: 0.6rem 0.4rem; font-size: 0.72rem; line-height: 1.2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* peak tier has 4 short labels -> 2x2 grid reads clean and narrow */
+  .tier--peak .bricks { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 380px) {
+  .brick { font-size: 0.68rem; padding: 0.55rem 0.3rem; }
+  .tier--peak { width: 70%; }
 }
 
 /* ============== PRINT / PDF EXPORT ============== */
