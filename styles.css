@@ -559,9 +559,10 @@ a:hover { color: var(--gold); }
   body { font-size: 16px; }
   .section { padding: 4.5rem 1.2rem; }
   .usage-grid { grid-template-columns: 1fr; }
-  .avc-mark--hero { top: 1rem; right: 1rem; opacity: 0.52; }
-  .avc-mark--hero .avc-lockup { transform: scale(0.84); }
+  .avc-mark--hero { top: 1.05rem; right: 1rem; opacity: 0.46; }
+  .avc-mark--hero .avc-lockup { transform: scale(0.74); }
   .avc-mark--hero .brand-tag { display: none; }
+  .avc-mark--hero .avc-full { letter-spacing: 0.12em; }
   .tier--peak, .tier--expression, .tier--pillars, .tier--foundation { width: 100%; }
   .brick { flex: 1 1 100%; min-width: 0; }
   .colo-foot { flex-direction: column; }
