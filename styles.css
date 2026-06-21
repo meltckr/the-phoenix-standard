@@ -189,6 +189,58 @@ a:hover { color: var(--gold); }
 }
 .ns-cite { margin: 2.6rem auto 0; max-width: 56ch; font-size: 0.92rem; color: var(--ink-mute); line-height: 1.7; }
 
+/* ============== USAGE ============== */
+.section--usage {
+  background:
+    radial-gradient(70% 48% at 50% 0%, rgba(200,146,43,0.06), transparent 62%),
+    linear-gradient(180deg, var(--black), var(--granite-900));
+}
+.usage-grid {
+  margin-top: 3.8rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.usage-card {
+  min-height: 210px;
+  padding: 1.65rem 1.45rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--granite-800), var(--granite-900));
+  position: relative;
+}
+.usage-card::after {
+  content: "";
+  position: absolute;
+  left: 1.45rem;
+  right: 1.45rem;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.35;
+}
+.usage-num {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+}
+.usage-card h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.usage-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
 /* ============== MONUMENT / PYRAMID ============== */
 .section--monument {
   background:
@@ -302,6 +354,34 @@ a:hover { color: var(--gold); }
 .team-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.85rem; margin: 0.5rem 0 0.9rem; color: var(--ink); }
 .team-card p { margin: 0; color: var(--ink-soft); font-size: 0.96rem; line-height: 1.65; }
 
+/* ============== DECISION STANDARD ============== */
+.section--decision {
+  background:
+    radial-gradient(52% 45% at 50% 50%, var(--orange-soft), transparent 70%),
+    linear-gradient(180deg, var(--black), var(--granite-900));
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  padding-top: clamp(5.5rem, 10vw, 8rem);
+  padding-bottom: clamp(5.5rem, 10vw, 8rem);
+}
+.decision-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(2rem, 5.2vw, 3.65rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 auto 1.6rem;
+  max-width: 18ch;
+}
+.decision-copy {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
 /* ============== COVENANT ============== */
 .section--covenant { background: linear-gradient(180deg, var(--black), var(--granite-900)); }
 .covenant-list {
@@ -336,6 +416,56 @@ a:hover { color: var(--gold); }
 .flags-col li strong { color: var(--ink); font-size: 0.96rem; font-weight: 600; }
 .flags-col li span { color: var(--ink-mute); font-size: 0.88rem; line-height: 1.55; }
 .flags-cite { margin: 2.6rem auto 0; max-width: 60ch; font-size: 0.85rem; color: var(--ink-mute); line-height: 1.6; }
+
+/* scorecard */
+.scorecard-head { margin-top: 6rem; }
+.scorecard {
+  margin-top: 2.8rem;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--granite-900);
+  box-shadow: 0 18px 70px rgba(0,0,0,0.28);
+}
+.score-row {
+  display: grid;
+  grid-template-columns: 0.75fr 1.7fr 0.42fr;
+  border-bottom: 1px solid var(--line-soft);
+}
+.score-row:last-child { border-bottom: 0; }
+.score-row span {
+  padding: 1rem 1.15rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  border-right: 1px solid var(--line-soft);
+}
+.score-row span:last-child {
+  border-right: 0;
+  text-align: center;
+  color: var(--gold-bright);
+  font-weight: 600;
+}
+.score-row span:first-child {
+  color: var(--ink);
+  font-weight: 650;
+}
+.score-row--head {
+  background: linear-gradient(180deg, var(--granite-700), var(--granite-800));
+}
+.score-row--head span {
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.score-row--risk {
+  background: rgba(226,88,34,0.07);
+}
+.score-row--risk span:first-child {
+  color: var(--gold-bright);
+}
 
 /* ============== CLOSING ============== */
 .section--closing {
@@ -390,10 +520,14 @@ a:hover { color: var(--gold); }
 @media (max-width: 860px) {
   .voices-grid { grid-template-columns: 1fr; }
   .three-grid { grid-template-columns: 1fr; }
+  .usage-grid { grid-template-columns: repeat(2, 1fr); }
   .covenant-list { grid-template-columns: 1fr; }
   .flags-grid { grid-template-columns: 1fr; }
   .colo-grid { grid-template-columns: 1fr; gap: 2.4rem; }
   .colo-sources ul { columns: 1; }
+  .score-row { grid-template-columns: 1fr; }
+  .score-row span { border-right: 0; border-bottom: 1px solid var(--line-soft); }
+  .score-row span:last-child { border-bottom: 0; text-align: left; }
   /* pyramid widens on small screens for legibility */
   .tier--peak       { width: 78%; }
   .tier--expression { width: 90%; }
@@ -402,10 +536,80 @@ a:hover { color: var(--gold); }
 @media (max-width: 540px) {
   body { font-size: 16px; }
   .section { padding: 4.5rem 1.2rem; }
+  .usage-grid { grid-template-columns: 1fr; }
   .avc-mark--hero { top: 1rem; right: 1rem; opacity: 0.52; }
   .avc-mark--hero .avc-logo-svg { width: 132px; }
   .avc-mark--hero .brand-tag { display: none; }
   .tier--peak, .tier--expression, .tier--pillars, .tier--foundation { width: 100%; }
   .brick { flex: 1 1 100%; min-width: 0; }
   .colo-foot { flex-direction: column; }
+}
+
+/* ============== PRINT / PDF EXPORT ============== */
+@media print {
+  @page { margin: 0.55in; }
+  html { scroll-behavior: auto; }
+  body {
+    background: #ffffff;
+    color: #111111;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  .grain, .vignette, .hero-scroll, .northstar-glyph svg { display: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a { color: #111111; text-decoration: underline; }
+  .hero, .section, .colophon {
+    background: #ffffff !important;
+    color: #111111 !important;
+    padding: 0.35in 0 !important;
+    min-height: auto !important;
+    page-break-inside: avoid;
+  }
+  .hero::before { display: none; }
+  .hero-title, .hero-tag, .section-title, .ns-statement, .decision-title, .closing-title, .closing-final,
+  .voice-head h3, .team-card h3, .usage-card h3 {
+    color: #111111 !important;
+    text-shadow: none !important;
+  }
+  .hero-sub, .lede, .section-intro, .decision-copy, .voice-note, .team-card p, .usage-card p,
+  .flags-col li span, .colo-note, .colo-sources a, .ns-cite, .flags-cite {
+    color: #333333 !important;
+  }
+  .kicker, .tier-num, .usage-num, .cov-n, .brand-tag, .colo-h {
+    color: #8a5a00 !important;
+  }
+  .avc-mark--hero {
+    position: static;
+    margin: 0 auto 0.2in;
+    align-items: center;
+  }
+  .avc-logo-svg line, .avc-logo-svg circle, .avc-logo-svg polyline {
+    stroke: #111111 !important;
+  }
+  .avc-logo-svg circle {
+    fill: none !important;
+  }
+  .avc-logo-svg text {
+    fill: #111111 !important;
+  }
+  .avc-logo-svg text:last-child { fill: #333333 !important; }
+  .usage-card, .voice, .team-card, .flags-col, .inscription, .scorecard, .brick {
+    background: #ffffff !important;
+    color: #111111 !important;
+    border: 1px solid #c8c8c8 !important;
+    box-shadow: none !important;
+  }
+  .score-row, .covenant-list, .covenant-list li {
+    border-color: #c8c8c8 !important;
+  }
+  .score-row span, .cov-b, .cov-h, .flags-head, .score-row--head span, .score-row span:first-child, .score-row span:last-child {
+    color: #111111 !important;
+  }
+  .voices-grid, .three-grid, .usage-grid, .flags-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.12in !important;
+  }
+  .pyramid, .covenant-list, .scorecard, .flags-grid {
+    page-break-inside: avoid;
+  }
 }
